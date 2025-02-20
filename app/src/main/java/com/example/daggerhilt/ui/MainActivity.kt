@@ -10,6 +10,7 @@ import com.example.daggerhilt.R
 import com.example.daggerhilt.binds.BindInterface
 import com.example.daggerhilt.databinding.ActivityMainBinding
 import com.example.daggerhilt.model.Engine
+import com.example.daggerhilt.viewmodel.AssistateViewModel
 import com.example.daggerhilt.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,12 +22,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     @Inject lateinit var engine: Provider<Engine>
     @Inject lateinit var bindInterface: BindInterface
-
+    @Inject lateinit var assisateInterface :  AssistateViewModel.AssistateViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.text.text = engine.get().name
+        val assistateViewModel = assisateInterface.create("Mahi aliya")
+
+        assistateViewModel.user_id.observe(this) {
+            binding.text.text = it
+        }
+
     }
 }
