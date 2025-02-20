@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var engine: Provider<Engine>
     @Inject lateinit var bindInterface: BindInterface
     @Inject lateinit var assisateInterface :  AssistateViewModel.AssistateViewModelFactory
+    @Inject lateinit var setString: Set<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,9 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val assistateViewModel = assisateInterface.create("Mahi aliya")
 
-        assistateViewModel.user_id.observe(this) {
-            binding.text.text = it
-        }
+        binding.text.text = setString.joinToString()
 
     }
 }
