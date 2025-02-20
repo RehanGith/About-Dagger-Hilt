@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var bindInterface: BindInterface
     @Inject lateinit var assisateInterface :  AssistateViewModel.AssistateViewModelFactory
     @Inject lateinit var setString: Set<String>
+    @Inject lateinit var intoMap: Map<String, String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val assistateViewModel = assisateInterface.create("Mahi aliya")
 
-        binding.text.text = setString.joinToString()
+        binding.text.text = intoMap.values.joinToString()
 
     }
 }
