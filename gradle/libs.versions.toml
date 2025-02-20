@@ -11,6 +11,7 @@ activity = "1.10.0"
 constraintlayout = "2.2.0"
 dagger = "2.50"
 hilt_android = "2.52"
+lifecyle = "2.8.7"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -23,9 +24,10 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 dagger-hilt = { group = "com.google.dagger",name = "hilt-android" ,version.ref = "hilt_android" }
 dagger-kapt = { group = "com.google.dagger" ,name = "hilt-android-compiler" , version.ref = "hilt_android" }
 
-
+androidx-lifecyle-viewmodel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecyle"}
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 dagger = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
+
 
