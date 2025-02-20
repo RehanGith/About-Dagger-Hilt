@@ -14,11 +14,12 @@ import com.example.daggerhilt.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import javax.inject.Provider
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    @Inject lateinit var engine: Engine
+    @Inject lateinit var engine: Provider<Engine>
     @Inject lateinit var bindInterface: BindInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +27,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val viewModel : MainViewModel by viewModels()
-        viewModel._name.observe(this){
-            binding.text.text = viewModel._name.value
-        }
+        binding.text.text = engine.get().name
     }
 }
